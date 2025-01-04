@@ -8,7 +8,7 @@ import { TypewriterDirective } from './directives/typewriter.directive';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, UploadAreaComponent, TypewriterDirective],
+  imports: [NavbarComponent, UploadAreaComponent, ],
   templateUrl: './app.component.html',
   styles: [],
 })

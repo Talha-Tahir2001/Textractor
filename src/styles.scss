@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dotted-grid {
+  background-image: radial-gradient(circle, #333 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .dotted-grid {
+  background-image: radial-gradient(circle, #666 1px, transparent 1px);
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-indigo-600 dark:bg-indigo-500 text-white rounded-lg 
+           hover:opacity-90 transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .card {
+    @apply bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10 
+           shadow-xl hover:shadow-2xl transition-all duration-300;
+  }
+
+  .upload-area {
+    @apply border-2 border-dashed border-gray-600 dark:border-gray-500 rounded-lg 
+           p-8 text-center transition-all duration-300 hover:border-indigo-500;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.delay-75 {
+  animation-delay: 0.75s;
+}
+
+.delay-150 {
+  animation-delay: 1.5s;
+}

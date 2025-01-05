@@ -1,20 +1,94 @@
 <div class="card max-w-2xl mx-auto">
-    <div class="upload-area">
-      <div class="mb-6">
-        <svg class="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-        </svg>
+  <div
+    class="upload-area"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+  >
+    <div class="mb-6">
+      <svg
+        class="w-16 h-16 mx-auto text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+        />
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+      Drag or drop your files here
+    </h3>
+    <p class="text-gray-500 dark:text-gray-400 mb-4">or</p>
+
+    <label for="fileInput" class="sr-only">Choose File</label>
+    <input
+      type="file"
+      id="fileInput"
+      title="Choose File"
+      #fileInput
+      (change)="onFileSelected($event)"
+      accept="image/png,image/jpeg,application/pdf"
+      class="hidden"
+    />
+
+    <button type="button" (click)="fileInput.click()" class="btn-primary">
+      Choose File
+    </button>
+
+    <p class="text-sm text-gray-500 mt-4">Supports: PNG, JPG, PDF (max 10MB)</p>
+
+    <!-- File Details Display -->
+    <div class="mt-6 text-left bg-black/5 dark:bg-white/5 backdrop-blur-lg 
+                    rounded-lg p-4 border border-white/10">
+      @if (fileDetails) {
+      <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">
+        File Details:
+      </h4>
+      <div class="grid grid-cols-2 gap-2 text-sm">
+        <div class="text-gray-600 dark:text-gray-400">Name:</div>
+        <div class="text-gray-900 dark:text-gray-200">
+          {{ fileDetails.name }}
+        </div>
+
+        <div class="text-gray-600 dark:text-gray-400">Size:</div>
+        <div class="text-gray-900 dark:text-gray-200 ">
+          {{ fileDetails.size }}
+        </div>
+
+        <div class="text-gray-600 dark:text-gray-400">Type:</div>
+        <div class="text-gray-900 dark:text-gray-200">
+          {{ fileDetails.type }}
+        </div>
+
+        <div class="text-gray-600 dark:text-gray-400">Modified:</div>
+        <div class="text-gray-900 dark:text-gray-200">
+          {{ fileDetails.modified }}
+        </div>
       </div>
-      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-        Drag or drop your files here
-      </h3>
-      <p class="text-gray-500 dark:text-gray-400 mb-4">or</p>
-      <button class="btn-primary">
-        Choose File
-      </button>
-      <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
-        Supports: PNG, JPG, PDF (max 10MB)
-      </p>
+      }
+
+      <!-- Image Preview -->
+      <!-- <div class="mt-4">
+        @if (imagePreview) {
+        <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">
+          Preview:
+        </h4>
+        <div class="bg-gray-50 dark:bg-gray-800 p-2 rounded-lg">
+          <img
+            [src]="imagePreview"
+            alt="File preview"
+            class="max-w-full h-auto rounded-lg shadow-sm"
+          />
+        </div>
+        }
+
+      </div> -->
+
     </div>
   </div>
+</div>

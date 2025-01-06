@@ -20,12 +20,18 @@
         </span>
       </p>
     </header>
-
-
     
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <app-upload-area 
+        (textExtracted)="handleTextExtraction($event)"
+        (imageUploaded)="handleImageUpload($event)">
+      </app-upload-area>
+      
+      <app-text-extraction 
+        [imageData]="extractionData">
+      </app-text-extraction>
+    </div>
 
 
-    <!-- Upload Area -->
-    <app-upload-area></app-upload-area>
-
+</main>
 

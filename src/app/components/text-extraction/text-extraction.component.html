@@ -1,0 +1,52 @@
+
+<div class="mt-2 card max-w-2xl mx-auto">
+  
+  
+  
+  <div class="mt-6 text-left bg-black/5 dark:bg-white/5 backdrop-blur-lg rounded-lg p-4 border border-white/10">
+
+    @if (isLoading) {
+      <div class="animate-pulse max-w-sm space-y-4">
+        <div class="h-4 bg-gray-200 rounded w-3/4">⚡⚡⚡⚡⚡</div>
+      </div>
+    
+    }
+    
+    @if (error) {
+      <div class="p-4 bg-red-50 text-red-700 rounded-md">
+        {{ error }}
+      </div>
+    
+    }
+    
+    @if (extractedText) {
+    
+      <div class="mt-6">
+      <h2 class="text-lg font-semibold text-gray-700 mb-2"></h2>
+        <div class="bg-gray-50 rounded-md p-4 font-mono text-sm whitespace-pre-wrap">
+          {{ extractedText }}
+        </div>
+      </div>
+    }
+  </div>
+  
+</div>
+ 
+  
+  <!-- <button type="button" 
+                  class="btn-primary !p-2" title="Copy">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                 class="w-5 h-5" 
+                 fill="none" 
+                 viewBox="0 0 24 24" 
+                 stroke="currentColor">
+              <path stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    stroke-width="2" 
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+          </button> -->
+
+          
+
+

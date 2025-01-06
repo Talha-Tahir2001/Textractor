@@ -40,7 +40,7 @@
       Choose File
     </button>
 
-    <p class="text-sm text-gray-500 mt-4">Supports: PNG, JPG, PDF (max 10MB)</p>
+    <p class="text-sm text-gray-500 mt-4">Supports: PNG, JPG (max 10MB)</p>
 
     <!-- File Details Display -->
     <div class="mt-6 text-left bg-black/5 dark:bg-white/5 backdrop-blur-lg 
@@ -49,7 +49,7 @@
       <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">
         File Details:
       </h4>
-      <div class="grid grid-cols-2 gap-2 text-lg">
+      <div class="grid grid-cols-2 gap-2 text-md">
         <div class="text-gray-600 dark:text-gray-400">Name:</div>
         <div class="text-gray-900 dark:text-gray-200">
           {{ fileDetails.name }}
@@ -71,7 +71,7 @@
         </div>
       </div>
       }
-
+    </div>
       <!-- Image Preview -->
       <!-- <div class="mt-4">
         @if (imagePreview) {
@@ -86,9 +86,9 @@
           />
         </div>
         }
-
       </div> -->
-
+      
     </div>
+    <!-- <app-text-extraction ></app-text-extraction> -->
   </div>
-</div>
+

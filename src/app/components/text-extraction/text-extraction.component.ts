@@ -1,6 +1,6 @@
 import { Component, inject, input, Input } from '@angular/core';
 import { GeminiService } from '../../services/gemini.service';
-import { ExtractedText } from '../../models/file-details';
+
 
 @Component({
   selector: 'app-text-extraction',
@@ -13,6 +13,10 @@ export class TextExtractionComponent {
   extractedText: string = '';
   isLoading: boolean = false;
   error: string | null = null;
+
+  isSpeaking = false;
+  speechSynthesis: SpeechSynthesis = window.speechSynthesis;
+  currentUtterance: SpeechSynthesisUtterance | null = null;
   
   geminiService: GeminiService = inject(GeminiService);
 
@@ -34,6 +38,36 @@ export class TextExtractionComponent {
     } finally {
       this.isLoading = false;
     }
+  }
+
+  handleTextToSpeech() {
+    if (this.isSpeaking) {
+      this.speechSynthesis.cancel();
+      this.isSpeaking = false;
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(this.extractedText);
+    utterance.onend = () => {
+      this.isSpeaking = false;
+    };
+    
+    this.currentUtterance = utterance;
+    this.isSpeaking = true;
+    this.speechSynthesis.speak(utterance);
+  }
+
+  async handleDownloadPDF() {
+    const { jsPDF } = await import('jspdf');
+    const doc = new jsPDF();
+    
+    const splitText = doc.splitTextToSize(this.extractedText, 180);
+    doc.text(splitText, 15, 15);
+    doc.save('extracted-text.pdf');
+  }
+
+  handleCopy() {
+    navigator.clipboard.writeText(this.extractedText);
   }
 
 }

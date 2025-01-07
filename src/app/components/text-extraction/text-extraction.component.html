@@ -1,52 +1,84 @@
-
-<div class="mt-2 card max-w-2xl mx-auto">
-  
-  
-  
-  <div class="mt-6 text-left bg-black/5 dark:bg-white/5 backdrop-blur-lg rounded-lg p-4 border border-white/10">
-
+<div class="mt-4  max-w-3xl mx-auto shadow-lg ">
+  <!-- <div
+    class="mt-6  bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700"
+  > -->
     @if (isLoading) {
-      <div class="animate-pulse max-w-sm space-y-4">
-        <div class="h-4 bg-gray-200 rounded w-3/4">⚡⚡⚡⚡⚡</div>
-      </div>
-    
-    }
-    
-    @if (error) {
-      <div class="p-4 bg-red-50 text-red-700 rounded-md">
-        {{ error }}
-      </div>
-    
-    }
-    
-    @if (extractedText) {
-    
-      <div class="mt-6">
-      <h2 class="text-lg font-semibold text-gray-700 mb-2"></h2>
-        <div class="bg-gray-50 rounded-md p-4 font-mono text-sm whitespace-pre-wrap">
-          {{ extractedText }}
+      <!-- <div class="fixed inset-0 bg-black/50 flex items-center justify-center"> -->
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-xl">
+          <div class="animate-spin w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full mx-auto"></div>
+          <p class="mt-4 text-center text-gray-800 dark:text-white">Processing image...</p>
         </div>
+      <!-- </div> -->
+    } @if (error) {
+    <div
+      class="p-4 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 rounded-md"
+    >
+      {{ error }}
+    </div>
+    } 
+    @if (extractedText) {
+    <div class="mt-6 card">
+      <div class="flex justify-between items-center mb-2">
+        <h2 class="text-lg font-semibold text-gray-700 ">
+          <!-- Extracted Text -->
+        </h2>
+        <button (click)="handleCopy()" type="button" class="btn-primary !p-2" title="Copy">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+            />
+          </svg>
+        </button>
+        <button type="button"
+        title="Download PDF"
+        (click)="handleDownloadPDF()" 
+                      class="text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-300 
+                             flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download PDF
+              </button>
+        <button type="button"
+          (click)="handleTextToSpeech()"
+          [class.text-blue-600]="isSpeaking"
+          class="text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center gap-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+            />
+          </svg>
+          {{ isSpeaking ? "Stop" : "Speak" }}
+        </button>
+
       </div>
+      <div
+        class=" rounded-md shadow p-4 font-mono text-sm whitespace-pre-wrap text-gray-700 dark:text-gray-300"
+      >
+        {{ extractedText }}
+      </div>
+    </div>
     }
-  </div>
-  
+
+  <!-- </div> -->
 </div>
- 
-  
-  <!-- <button type="button" 
-                  class="btn-primary !p-2" title="Copy">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-                 class="w-5 h-5" 
-                 fill="none" 
-                 viewBox="0 0 24 24" 
-                 stroke="currentColor">
-              <path stroke-linecap="round" 
-                    stroke-linejoin="round" 
-                    stroke-width="2" 
-                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-            </svg>
-          </button> -->
-
-          
-
-

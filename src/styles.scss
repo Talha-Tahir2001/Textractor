@@ -44,3 +44,46 @@
 .delay-150 {
   animation-delay: 1.5s;
 }
+
+/* Additional Media Queries for Responsiveness */
+@screen sm {
+  .btn-primary {
+    @apply text-sm px-3 py-2;
+  }
+
+  .card {
+    @apply p-4;
+  }
+
+  .upload-area {
+    @apply p-6;
+  }
+}
+
+@screen md {
+  .btn-primary {
+    @apply text-base px-4 py-3;
+  }
+
+  .card {
+    @apply p-5;
+  }
+
+  .upload-area {
+    @apply p-7;
+  }
+}
+
+@screen lg {
+  .btn-primary {
+    @apply text-lg px-5 py-4;
+  }
+
+  .card {
+    @apply p-6;
+  }
+
+  .upload-area {
+    @apply p-8;
+  }
+}

@@ -34,7 +34,7 @@ Check out the live app: [Textractor](https://textractor-blond.vercel.app/)
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/textractor.git
+   git clone https://github.com/Talha-Tahir2001/textractor.git
    cd textractor
    npm install
 2.  **Install dependencies**:
@@ -67,7 +67,7 @@ Check out the live app: [Textractor](https://textractor-blond.vercel.app/)
 ## Contributing 🤝
 
 Contributions, issues, and feature requests are welcome!  
-Feel free to check out the [issues page](https://github.com/your-username/textractor/issues).
+Feel free to check out the [issues page](https://github.com/Talha-Tahir2001/textractor/issues).
 
 ## Further help
 
@@ -76,7 +76,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## License 📜
 
 This project is licensed under the MIT License.  
-See the [LICENSE]() file for details.
+See the [LICENSE](https://github.com/Talha-Tahir2001/textractor/blob/main/LICENSE) file for details.
 
 ## Acknowledgements 🙌
 
